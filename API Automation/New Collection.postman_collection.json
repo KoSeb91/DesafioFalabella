@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "ce757849-7ab6-4251-adde-fb796666993e",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DesafioSwagger",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Codigo de estado es 200\"] = responseCode.code === 200;\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Status: \" + data.status] = data.status === \"available\";\r",
+							"pm.expect(data.id).to.exist\r",
+							"pm.expect(data.id).to.not.be.null\r",
+							"tests[\"Number ID Category: \" + data.category.id] = data.category.id === 2;\r",
+							"tests[\"Number name Category: \" + data.category.name] = data.category.name ===\"Pequin\";\r",
+							"tests[\"name: \" + data.name] = data.name=== \"doggie\";\r",
+							"tests[\"url photo: \" + data.photoUrls[0]] = data.photoUrls[0]=== \"Photo-urk.org\";\r",
+							"tests[\"tags name: \" + data.tags[0].name] = data.tags[0].name=== \"puppy\";\r",
+							"\r",
+							"\r",
+							"pm.test(\"Payload (JSON) es valido y existe un body\", function () { \r",
+							"     pm.response.to.be.withBody; // body tiene que exitir\r",
+							"     pm.response.to.be.json; // además que sea un JSON válido\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"category\": {\r\n        \"id\": 2,\r\n        \"name\": \"Pequin\"\r\n    },\r\n    \"name\": \"doggie\",\r\n    \"photoUrls\": [\r\n        \"Photo-urk.org\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 0,\r\n            \"name\": \"puppy\"\r\n        }\r\n    ],\r\n    \"status\": \"available\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
