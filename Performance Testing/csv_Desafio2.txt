@@ -1,0 +1,4 @@
+idCategoria,nameCategoria,name,photoURL,idTags,nameTags
+2,pequin,doggie,photo-urk.org,0,puppy
+3,pequin3,doggie3,photo-urk2.org,0,puppy3
+4,pequin4,doggie4,photo-urk4.org,0,puppy4
